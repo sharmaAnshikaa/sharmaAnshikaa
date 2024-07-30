@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Dynamic Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid gray;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .search-container {
+            margin-bottom: 10px;
+        }
+        .search-container input {
+            margin-left: 34.4rem;
+            font-family: 'Roboto';
+            width: 10.2rem;
+            height: 2rem;
+            font-size: 1.1rem;
+            border: none;
+        }
+        button {
+            border: none;
+            background: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+        }
+          /* box */
+    .box {
+            background: #2EAF7D;
+            width: 140.38px;
+            height: 26.10px;
+            padding: 9.39px;
+            gap: 10px;
+            border-radius: 3px;
+            color: #E4E4E4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .span {
+            width: 117px;
+            height: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 11.5px;
+            text-align: center;
+             }
+    </style>
+</head>
+<body> 
+  <div class="box">
+    <div class="span">Salary information</div>
+</div> 
+  <div style="background-color:#efebeb;padding: 2rem;width: fit-content;">
+    <div class="search-container" >
+        <input type="text" id="search" placeholder="Search..." style="   border-radius: 4px;">
+    </div>
+    <table id="salaryTable" style="width: 45rem; background-color: #fdfdfd; font-family: 'Roboto'; color: #888383">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Months</th>
+                <th>Years</th>
+                <th>Salary Structure</th>
+                <th>Pay Slip Generate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td contenteditable="true">March</td>
+                <td contenteditable="true">2023</td>
+                <td style="background-color: rgb(137, 216, 137);"><button onclick="viewSalary(this)"   style="    color: gray"  >View</button></td>
+                <td><button onclick="downloadSlip(this)" style="    color: gray">Download Slip</button></td>
+            </tr>
+            <!-- Additional blank rows -->
+            <tr>
+                <td>2</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td><button onclick="viewSalary(this)"></button></td>
+                <td><button onclick="downloadSlip(this)"></button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td><button onclick="viewSalary(this)"></button></td>
+                <td><button onclick="downloadSlip(this)"></button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td><button onclick="viewSalary(this)"></button></td>
+                <td><button onclick="downloadSlip(this)"></button></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td><button onclick="viewSalary(this)"></button></td>
+                <td><button onclick="downloadSlip(this)"></button></td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+    <script>
+        document.getElementById('search').addEventListener('input', function() {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#salaryTable tbody tr');
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const match = Array.from(cells).some(cell => cell.textContent.toLowerCase().includes(filter));
+                row.style.display = match ? '' : 'none';
+            });
+        });
+
+        document.querySelector('#salaryTable tbody').addEventListener('input', function() {
+            const rows = document.querySelectorAll('#salaryTable tbody tr');
+            const lastRow = rows[rows.length - 1];
+            const isEmpty = Array.from(lastRow.cells).some(cell => cell.textContent === '');
+            if (!isEmpty) {
+                const newRow = lastRow.cloneNode(true);
+                newRow.querySelectorAll('td').forEach(cell => {
+                    cell.textContent = '';
+                    if (cell.children.length > 0) {
+                        cell.children[0].removeAttribute('onclick');
+                    }
+                });
+                newRow.cells[0].textContent = rows.length + 1;
+                document.querySelector('#salaryTable tbody').appendChild(newRow);
+            }
+        });
+
+        function viewSalary(button) {
+            alert('Viewing salary structure...');
+        }
+
+        function downloadSlip(button) {
+            alert('Downloading pay slip...');
+        }
+    </script>
+</body>
+</html>

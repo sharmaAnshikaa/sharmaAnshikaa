@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Slider</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .carousel {
+            position: relative;
+            width: 1000px; /* Adjusted to fit four cards */
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .card {
+            width: 240px;
+            border: 1px solid #ddd;
+            border-radius: 3.4rem;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 2px solid #7adc7a;
+            margin-right: 10px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h2 {
+            color: #333;
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+
+        .card-content button {
+            background-color: rgb(245, 245, 245);
+            color: #000;
+            border: 2px solid green;
+            padding: 10px 20px;
+            border-radius: 17px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .card-content button:hover {
+            background-color: #c5c6c7;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="Rectangle 444.svg" alt="Manager View Image" class="card-img">
+                <div class="card-content">
+                    <h2>Manager View</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <button>Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </div>
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-inner .card');
+            const totalSlides = slides.length;
+
+            if (index >= totalSlides - 3) {
+                index = totalSlides - 4;
+            } else if (index < 0) {
+                index = 0;
+            }
+
+            const offset = -index * 250; // Adjusted width of card + margin
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
+
+            document.querySelectorAll('.dot').forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+
+            currentIndex = index;
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentIndex);
+        });
+    </script>
+</body>
+</html>

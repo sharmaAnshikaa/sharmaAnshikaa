@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editable Project Table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .editable {
+      padding: 8px;
+      cursor: pointer;
+    }
+    .editable:focus {
+      outline: none;
+      border: none;
+      background-color: #f0f0f0;
+    }
+    .header-cell {
+      color: gray;
+    }
+    .search-bar {
+      color: gray;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mx-auto p-4">
+    <div class="flex justify-end mb-4">
+      <input type="text" id="search" placeholder="Search..." class="px-4 py-2 border rounded search-bar">
+    </div>
+    <table class="w-full text-left">
+      <thead>
+        <tr>
+          <th class="p-2 header-cell">Project ID</th>
+          <th class="p-2 header-cell">Project Title</th>
+          <th class="p-2 header-cell">Project Manager</th>
+          <th class="p-2 header-cell">Category</th>
+          <th class="p-2 header-cell">State</th>
+          <th class="p-2 header-cell">Start Date</th>
+          <th class="p-2 header-cell">End Date</th>
+          <th class="p-2 header-cell">Deadline</th>
+        </tr>
+      </thead>
+      <tbody id="projectTable">
+        <tr>
+          <td class="p-2">101</td>
+          <td class="p-2"><a href="#">HRMS</a></td>
+          <td class="p-2">Rohit sir</td>
+          <td class="p-2">Saas Project</td>
+          <td class="p-2">Active</td>
+          <td class="p-2">01/Nov/2023</td>
+          <td class="p-2">10/Dec/2023</td>
+          <td class="p-2">04/Dec/2023</td>
+        </tr>
+        <!-- Blank rows for additional data -->
+        <tr>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById('search').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#projectTable tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        let match = false;
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase().includes(filter)) {
+            match = true;
+          }
+        });
+        if (match) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // Function to add a new row
+    function addRow() {
+      const table = document.getElementById('projectTable');
+      const newRow = document.createElement('tr');
+      for (let i = 0; i < 8; i++) {
+        const newCell = document.createElement('td');
+        newCell.contentEditable = "true";
+        newCell.className = "editable p-2";
+        newRow.appendChild(newCell);
+      }
+      table.appendChild(newRow);
+    }
+
+    // Check if all rows are filled and add a new row if necessary
+    function checkAndAddRow() {
+      const rows = document.querySelectorAll('#projectTable tr');
+      let allFilled = true;
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        cells.forEach(cell => {
+          if (cell.textContent.trim() === '' && cell.classList.contains('editable')) {
+            allFilled = false;
+          }
+        });
+      });
+      if (allFilled) {
+        addRow();
+      }
+    }
+
+    // Add event listener to check and add row on cell input
+    document.querySelectorAll('#projectTable td').forEach(cell => {
+      cell.addEventListener('input', checkAndAddRow);
+    });
+
+    // Initial check to add the first blank row if needed
+    checkAndAddRow();
+  </script>
+</body>
+</html>

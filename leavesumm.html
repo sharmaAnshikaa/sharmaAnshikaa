@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .outer-circle {
+            width: 169px;
+            height: 169px;
+            border-radius: 50%;
+            border: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .inner-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5rem;
+        }
+        .circle-text {
+            position: absolute;
+            top: 53px;
+            font-size: 1rem;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="outer-circle">
+        <div class="circle-text">Total Leave</div>
+        <div class="inner-circle">
+            <div class="text-3xl font-bold" id="total-leave">0</div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for dynamic content
+        document.getElementById('total-leave').textContent = 30;
+    </script>
+</body>
+</html>

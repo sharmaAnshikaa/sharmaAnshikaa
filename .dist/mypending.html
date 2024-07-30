@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editable Project Table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .editable {
+      padding: 8px;
+      cursor: pointer;
+    }
+    .editable:focus {
+      outline: none;
+      border: none;
+      background-color: #f0f0f0;
+    }
+    .header-cell {
+      color: gray;
+    }
+    .search-bar {
+      color: gray;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+    .box {
+      background: #2EAF7D;
+      width: 175.38px;
+      height: 26.10px;
+      padding: 9.39px;
+      gap: 10px;
+      border-radius: 3px;
+      color: #E4E4E4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .span {
+      /* width: 117px; */
+      height: 11px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 11.5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="span">My pending request</div>
+  </div> 
+  <div class="w-full max-w-4xl p-4 bg-white rounded-lg shadow" style="padding: 2rem; max-width: 67rem;">
+    <div class="flex justify-end mb-4">
+      <input type="text" id="search" placeholder="Search..." class="px-4 py-2 border rounded search-bar" style="background-color: #fafafa;">
+    </div>
+    <table class="w-full text-left" style="background-color:#fafafa; width: 63rem;">
+      <thead>
+        <tr>
+          <th class="p-2 header-cell">ID</th>
+          <th class="p-2 header-cell">Leave Type</th>
+          <th class="p-2 header-cell">Name</th>
+          <th class="p-2 header-cell">Short Summary</th>
+          <th class="p-2 header-cell">Status</th>
+        </tr>
+      </thead>
+      <tbody id="leaveTable">
+        <tr>
+          <td class="p-2">10</td>
+          <td class="p-2">Sick</td>
+          <td class="p-2">Rohit sir</td>
+          <td class="p-2">...</td>
+          <td class="p-2"><button class="add-row bg-green-500 text-white px-4 py-1 rounded">Approval</button></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+          <td contenteditable="true" class="editable p-2"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById('search').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#leaveTable tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        let match = false;
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase().includes(filter)) {
+            match = true;
+          }
+        });
+        if (match) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    function addRow() {
+      const table = document.getElementById('leaveTable');
+      const newRow = document.createElement('tr');
+      for (let i = 0; i < 5; i++) {
+        const newCell = document.createElement('td');
+        newCell.contentEditable = "true";
+        newCell.className = "editable p-2";
+        newRow.appendChild(newCell);
+      }
+      table.appendChild(newRow);
+    }
+
+    function checkAndAddRow() {
+      const rows = document.querySelectorAll('#leaveTable tr');
+      let allFilled = true;
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        cells.forEach(cell => {
+          if (cell.textContent.trim() === '' && cell.classList.contains('editable')) {
+            allFilled = false;
+          }
+        });
+      });
+      if (allFilled) {
+        addRow();
+      }
+    }
+
+    document.querySelectorAll('#leaveTable td').forEach(cell => {
+      cell.addEventListener('input', checkAndAddRow);
+    });
+
+    checkAndAddRow();
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .outer-circle {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            border: 2px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .inner-circle {
+            width: 57px;
+            height: 57px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3.6rem;
+        }
+        .circle-text {
+            position: absolute;
+            top: 38px;
+            font-size: 1rem;
+            
+            font-weight: 600;
+    color: #9e9797;
+        }
+    </style>
+</head>
+<!-- <body class="flex items-center justify-center min-h-screen bg-gray-100"> -->
+    <div class="grid grid-cols-2 gap p-6 bg-white lg shadow-lg" style="gap: 0.5rem; padding: 0.6rem;width: 18rem;height: 18rem">
+        <div class="outer-circle">
+            <div class="circle-text">Leave Taken</div>
+            <div class="inner-circle">
+                <div class="text-3xl font-bold" id="leave-taken">0</div>
+            </div>
+        </div>
+        <div class="outer-circle">
+            <div class="circle-text">Total Leave</div>
+            <div class="inner-circle">
+                <div class="text-3xl font-bold" id="total-leave">0</div>
+            </div>
+        </div>
+        <div class="outer-circle">
+            <div class="circle-text">Leave Balance</div>
+            <div class="inner-circle">
+                <div class="text-3xl font-bold" id="leave-balance">0</div>
+            </div>
+        </div>
+        <div class="outer-circle">
+            <div class="circle-text">Sick Leave</div>
+            <div class="inner-circle">
+                <div class="text-3xl font-bold" id="sick-leave">0</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for dynamic content
+        document.getElementById('leave-taken').textContent = 10;
+        document.getElementById('total-leave').textContent = 30;
+        document.getElementById('leave-balance').textContent = 5;
+        document.getElementById('sick-leave').textContent = 5;
+    </script>
+</body>
+</html>

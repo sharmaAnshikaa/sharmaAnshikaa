@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editable Project Table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .editable {
+      padding: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      color: gray; /* Set text color to gray */
+    }
+    .editable:focus {
+      outline: none;
+      border: 1px solid #000;
+      color: gray; /* Ensure text color remains gray on focus */
+    }
+    .header-cell, .search-bar {
+      color: gray; /* Set header and search bar text color to gray */
+    }
+    .non-editable {
+      padding: 8px;
+      border: 1px solid #ccc;
+      color: gray; /* Set text color to gray */
+      background-color: #f9f9f9; /* Light gray background for non-editable cells */
+    }
+    table, th, td {
+      border: 1px solid #ccc; /* Add border to table, headers, and cells */
+      border-collapse: collapse;
+    }
+    .circle-cell {
+      width: 24px;
+      text-align: center;
+    }
+    .circle {
+      height: 12px;
+      width: 12px;
+      border: 2px solid gray;
+      border-radius: 50%;
+      display: inline-block;
+      background-color: transparent; /* Make the circle background transparent */
+    }
+    /* box */
+    .box {
+            background: #2EAF7D;
+            width: 140.38px;
+            height: 26.10px;
+            padding: 9.39px;
+            gap: 10px;
+            border-radius: 3px;
+            color: #E4E4E4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .span {
+            width: 117px;
+            height: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 11.5px;
+            text-align: center;
+             }
+
+  </style>
+</head>
+
+<div class="box">
+    <div class="span">TimeSheet form</div>
+</div> 
+  <div class="w-full max-w-4xl p-4 bg-white rounded-lg shadow" style="padding: 2rem;">
+    <div class="flex items-center justify-between mb-4">
+      <input type="text" id="search" placeholder="Search..." class="px-4 py-2 border rounded search-bar" style="margin-left: 38.5rem;">
+    </div>
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr>
+          <th class="p-2 border-b border-gray-300 header-cell"></th>
+          <th class="p-2 border-b border-gray-300 header-cell">Date</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Project Title</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Location</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Hours Invested</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Description</th>
+        </tr> 
+      </thead>
+      <tbody id="projectTable">
+        <tr>
+          <td class="circle-cell non-editable"><span class="circle"></span></td>
+          <td class="non-editable">24/11/2023</td>
+          <td class="non-editable">HRMS</td>
+          <td class="non-editable">Office</td>
+          <td class="non-editable">8.00</td>
+          <td class="non-editable">................</td>
+        </tr>
+        <!-- Blank rows for additional data -->
+        <tr>
+          <td class="circle-cell"><span class="circle"></span></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td class="circle-cell"><span class="circle"></span></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td class="circle-cell"><span class="circle"></span></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td class="circle-cell"><span class="circle"></span></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td class="circle-cell"><span class="circle"></span></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td class="circle-cell"><span class="circle"></span></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById('search').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#projectTable tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        let match = false;
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase().includes(filter)) {
+            match = true;
+          }
+        });
+        if (match) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+
+</html>

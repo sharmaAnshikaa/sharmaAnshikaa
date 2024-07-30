@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+            /* box */
+    .box {
+            background: #2EAF7D;
+            width: 175.38px;
+            height: 37.18px;
+            padding: 9.39px;
+            gap: 10px;
+            border-radius: 3px;
+            color: #E4E4E4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .span {
+            /* width: 117px; */
+            height: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 11.5px;
+            text-align: center;
+             }
+    </style>
+</head>
+<div class="box">
+    <div class="span">Personal Information</div>
+</div>  
+
+
+    <div class="bg-white shadow-md rounded-lg " style="background-color: #efeeee; width: fit-content;">
+        
+        <div class="p-6" style="padding: 3.5rem;">
+            <div class="mb-4 flex">
+                <label for="name" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Name</label>
+                <input type="text" id="name" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="Krishna Kumar">
+            </div>
+            <div class="mb-4 flex">
+                <label for="gender" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Gender</label>
+                <input type="text" id="gender" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="Male">
+            </div>
+            <div class="mb-4 flex">
+                <label for="reportingTo" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Reporting To</label>
+                <input type="text" id="reportingTo" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="Manager">
+            </div>
+            <div class="mb-4 flex">
+                <label for="dob" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Date of Birth</label>
+                <input type="text" id="dob" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="18/04/2003">
+            </div>
+            <div class="mb-4 flex">
+                <label for="age" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Age</label>
+                <input type="text" id="age" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="21">
+            </div>
+            <div class="mb-4 flex">
+                <label for="country" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Country</label>
+                <input type="text" id="country" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="India">
+            </div>
+            <div class="mb-4 flex">
+                <label for="mobileNumber" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Mobile Number</label>
+                <input type="text" id="mobileNumber" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="1525465896">
+            </div>
+            <div class="mb-4 flex">
+                <label for="bloodGroup" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Blood Group</label>
+                <input type="text" id="bloodGroup" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="B+">
+            </div>
+            <div class="mb-4 flex">
+                <label for="education" class="w-1/2 text-gray-700 font-bold" style="color: #848282;">Educational Qualification</label>
+                <input type="text" id="education" class="w-1/2 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="Btech">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const { id, value } = e.target;
+                document.getElementById(id).value = value;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRMS Suite Services</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #F4F7F6;
+        }
+
+        .hrmsimage-services-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            position: relative; /* Added for positioning */
+        }
+
+        .hrmsimage-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hrmsimage-content {
+            width: 50%;
+        }
+
+        .hrmsimage-content h2 {
+            font-size: 1.5rem;
+            color: #02353C;
+        }
+
+        .hrmsimage-content h2 span {
+            color: #2EAF7D;
+        }
+
+        .hrmsimage-content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .hrmsimage-read-btn {
+            background-color: #02353C;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hrmsimage {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hrmsimage img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+
+        .hrmsimage-upper-right {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            width: 30%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hrmsimage-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hrmsimage-content, .hrmsimage {
+                width: 100%;
+            }
+
+            .hrmsimage-content h2 {
+                font-size: 1.75rem;
+            }
+
+            .hrmsimage-content p {
+                font-size: 0.875rem;
+            }
+
+            .hrmsimage-read-btn {
+                padding: 8px 16px;
+            }
+            
+            .hrmsimage-upper-right {
+                width: 50%;
+                max-width: 150px;
+                right: 5px;
+                top: -5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hrmsimage-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .hrmsimage-content p {
+                font-size: 0.75rem;
+            }
+
+            .hrmsimage-read-btn {
+                padding: 6px 12px;
+            }
+
+            .hrmsimage-upper-right {
+                width: 50%;
+                max-width: 100px;
+                right: 2px;
+                top: -2px;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+        <img src="image.png" alt="HRMS Image" class="hrmsimage-upper-right">
+        <div class="hrmsimage-container">
+            <div class="hrmsimage-content">
+                <h2>A Complete <span>HRMS Suite</span></h2>
+                <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <a href="#" class="hrmsimage-read-btn">Read More</a>
+            </div>
+        </div>
+  
+</body>
+</html>

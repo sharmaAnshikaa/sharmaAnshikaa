@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .chart-container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            
+        }
+        .legend {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-right: 20px;
+        }
+        .legend div {
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            
+        }
+        .legend span {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 5px;
+            border: none;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+        <div class="legend">
+            <div style="color: #00BAE9;"><span style="background-color: #B1EBC4;"></span>Present</div>
+            <div style="color: #00BAE9;"><span style="background-color: #EBEDED;"></span>Absent</div>
+            <div style="color: #00BAE9;"><span style="background-color: #FFD08D;"></span>Holidays</div>
+            <div style="color: #00BAE9;"><span style="background-color: #F34848;"></span>Off</div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Wednesday, 01 July 2024',
+                    'Thursday, 02 July 2024',
+                    'Friday, 03 July 2024',
+                    'Saturday, 04 July 2024',
+                    'Sunday, 05 July 2024',
+                    'Monday, 06 July 2024',
+                    'Tuesday, 07 July 2024',
+                    'Wednesday, 08 July 2024',
+                    'Thursday, 09 July 2024',
+                    'Friday, 10 July 2024',
+                    'Saturday, 11 July 2024',
+                    'Sunday, 12 July 2024',
+                    'Monday, 13 July 2024',
+                    'Tuesday, 14 July 2024',
+                ],
+                datasets: [
+                    {
+                        label: 'Present',
+                        data: [4, 6, 8, 12, 15, 20, 7, 0, 0, 16, 8, 0, 0, 0],
+                        backgroundColor: '#B1EBC4'
+                    },
+                    {
+                        label: 'Absent',
+                        data: [0, 1, 0, 0, 0, 0, 10, 5, 0, 0, 0, 6, 0, 8],
+                        backgroundColor: '#EBEDED'
+                    },
+                    {
+                        label: 'Holidays',
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0],
+                        backgroundColor: '#FFD08D'
+                    },
+                    {
+                        label: 'Off',
+                        data: [0, 0, 0, 0, 0, 6, 12, 8, 0, 0, 0, 0, 10, 0],
+                        backgroundColor: '#F34848'
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return new Date(values[index]).toLocaleString('en-US', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1,
+                            callback: function(value) {
+                                return value + ' hr';
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                barThickness: 14.79
+            }
+        });
+    </script>
+</body>
+</html>

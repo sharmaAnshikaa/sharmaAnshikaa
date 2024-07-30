@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editable Leave Table</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .editable {
+      padding: 8px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      color: gray; /* Set text color to gray */
+    }
+    .editable:focus {
+      outline: none;
+      border: 1px solid #000;
+      color: gray; /* Ensure text color remains gray on focus */
+    }
+    .header-cell, .search-bar {
+      color: gray; /* Set header and search bar text color to gray */
+    }
+    .non-editable {
+      padding: 8px;
+      border: 1px solid #ccc;
+      color: gray; /* Set text color to gray */
+      background-color: #f9f9f9; /* Light gray background for non-editable cells */
+    }
+    table, th, td {
+      border: 1px solid #ccc; /* Add border to table, headers, and cells */
+      border-collapse: collapse;
+    }
+    .approved {
+      background-color: #a8e6a8; /* Green background for approved leaves */
+    }
+    /* box */
+    .box {
+            background: #2EAF7D;
+            width: 140.38px;
+            height: 26.10px;
+            padding: 9.39px;
+            gap: 10px;
+            border-radius: 3px;
+            color: #E4E4E4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .span {
+            width: 117px;
+            height: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 11.5px;
+            text-align: center;
+             }
+  </style>
+</head>
+
+<div class="box">
+    <div class="span">Leave report</div>
+</div>  
+  <div class="w-full max-w-4xl p-4 bg-white rounded-lg shadow"style="padding:3rem;">
+    <div class="flex items-center justify-between mb-4">
+      <!-- <h2 class="text-xl font-bold text-gray-700 header-cell">Leave Summary</h2> -->
+      <input type="text" id="search" placeholder="Search..." class="px-4 py-2 border rounded search-bar" style="margin-left: 36.5rem;">
+    </div>
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr>
+          <th class="p-2 border-b border-gray-300 header-cell">Sr.No</th>
+          <th class="p-2 border-b border-gray-300 header-cell">From Date</th>
+          <th class="p-2 border-b border-gray-300 header-cell">To Date</th>
+          <th class="p-2 border-b border-gray-300 header-cell">No. of Days</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Leave Type</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Reason for Leave</th>
+          <th class="p-2 border-b border-gray-300 header-cell">Status</th>
+        </tr> 
+      </thead>
+      <tbody id="leaveTable">
+        <tr>
+          <td class="non-editable">1</td>
+          <td class="non-editable">24/11/2023</td>
+          <td class="non-editable">02/12/2023</td>
+          <td class="non-editable">8</td>
+          <td class="non-editable">Sick Leave</td>
+          <td class="non-editable">................</td>
+          <td class="non-editable approved">Approved</td>
+        </tr>
+        <!-- Blank rows for additional data -->
+        <tr>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+        <tr>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+          <td contenteditable="true" class="editable"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById('search').addEventListener('input', function() {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#leaveTable tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        let match = false;
+        cells.forEach(cell => {
+          if (cell.textContent.toLowerCase().includes(filter)) {
+            match = true;
+          }
+        });
+        if (match) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
+    // Add class 'approved' to cells with 'Approved' text
+    const updateApprovalStatus = () => {
+      const rows = document.querySelectorAll('#leaveTable tr');
+      rows.forEach(row => {
+        const statusCell = row.querySelector('td:last-child');
+        if (statusCell && statusCell.textContent.trim().toLowerCase() === 'approved') {
+          statusCell.classList.add('approved');
+        } else {
+          statusCell.classList.remove('approved');
+        }
+      });
+    };
+
+    document.querySelectorAll('.editable').forEach(cell => {
+      cell.addEventListener('input', updateApprovalStatus);
+    });
+
+    // Initial call to highlight approved cells on page load
+    updateApprovalStatus();
+  </script>
+
+
+</html>

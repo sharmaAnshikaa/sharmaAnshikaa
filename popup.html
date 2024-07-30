@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Structure</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 100px;
+        }
+        .header .title {
+            background-color: #36D483;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .details div {
+            width: 45%;
+        }
+        .details div p {
+            margin: 5px 0;
+        }
+        .separator {
+            margin: 20px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .table {
+            width: 45%;
+        }
+        .table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table table, .table th, .table td {
+            border: 1px solid #ddd;
+        }
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+        }
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #B1EBC4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .total p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="Logo">
+            <div class="title">Salary Structure</div>
+        </div>
+        <div class="details">
+            <div>
+                <p><strong>Employee Id:</strong> 101</p>
+                <p><strong>Department:</strong> Information Technology</p>
+                <p><strong>Date of Joining:</strong> 03/10/2023</p>
+                <p><strong>Pay Period:</strong> March</p>
+                <p><strong>Bank:</strong> Punjab National Bank</p>
+            </div>
+            <div>
+                <p><strong>Name:</strong> Krishna kumar</p>
+                <p><strong>Designation:</strong> Ui / Ux designer</p>
+                <p><strong>Location:</strong> Noida</p>
+                <p><strong>Pay Date:</strong> 03/11/2023</p>
+                <p><strong>PF No:</strong> 01212121254235212214</p>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="table-container">
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Earnings</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Basic Pay</td>
+                            <td>₹15000.00</td>
+                        </tr>
+                        <tr>
+                            <td>House Rent Allowance</td>
+                            <td>₹6000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Other Allowance</td>
+                            <td>₹2000.00</td>
+                        </tr>
+                        <tr>
+                            <td>Gross Earning</td>
+                            <td>₹23000.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Deductions</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Income Tax</td>
+                            <td>₹200.00</td>
+                        </tr>
+                        <tr>
+                            <td>Provident Fund</td>
+                            <td>₹1800.00</td>
+                        </tr>
+                        <tr>
+                            <td>Total Deductions</td>
+                            <td>₹2000.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="total">
+            <p>TOTAL NET PAY</p>
+            <p>₹21000.00</p>
+        </div>
+    </div>
+</body>
+</html>

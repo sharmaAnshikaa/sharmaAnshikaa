@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F2F5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 320px;
+            padding: 20px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar {
+            width: 290px;
+            height: 250px;
+            padding: 20px;
+            border-radius: 5px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .calendar-header h2 {
+            font-size: 16px;
+            margin: 0;
+            color: #02353C;
+        }
+
+        .calendar-header span {
+            font-size: 14px;
+            color: #02353C;
+        }
+
+        .calendar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar th,
+        .calendar td {
+            width: 14.28%;
+            text-align: center;
+            padding: 5px;
+            color: #02353C;
+        }
+
+        .calendar th {
+            font-weight: bold;
+        }
+
+        .calendar td {
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .calendar td:hover {
+            background: #2EAF7D;
+            color: white;
+        }
+
+        .todo-list {
+            margin-bottom: 20px;
+        }
+
+        .todo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .todo-header h3 {
+            font-size: 14px;
+            margin: 0;
+            color: #02353C;
+        }
+
+        .todo-input {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .todo-input input {
+            flex-grow: 1;
+            padding: 5px;
+            border: 1px solid #DADADA;
+            border-radius: 3px;
+            font-size: 12px;
+            border-top: none;
+        }
+
+        .todo-input button {
+            padding: 5px 10px;
+            background: #e2e2e2b2;
+            color: #787878B2;
+            border: 1px solid #787878B2;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .todo-input button:hover {
+            background: white;
+            color: #595959b2;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+            border-bottom: 1px solid #F0F2F5;
+            font-size: 12px;
+            color: #02353C;
+        }
+
+        .todo-item .icons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .todo-item .icons img {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+
+        .upcoming-holidays {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #F0F2F5;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upcoming-holidays h4 {
+            margin: 0;
+            font-size: 14px;
+            color: #02353C;
+        }
+
+        .upcoming-holidays img {
+            width: 14px;
+            height: 14px;
+        }
+        .dropdown-content{
+            margin-top: 10px;
+            border-top: 3px solid #02353C;
+            border-bottom: 3px solid #02353C;
+        }
+
+        .dropdown-content b {
+            display: flex;
+            padding: 4px 5px;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calendar">
+            <div class="calendar-header">
+                <h2>November 2023</h2>
+                <span>2023</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mo</th>
+                        <th>Tu</th>
+                        <th>We</th>
+                        <th>Th</th>
+                        <th>Fr</th>
+                        <th>Sa</th>
+                        <th>Su</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>30</td>
+                        <td>31</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="todo-list">
+            <div class="todo-header">
+                <h3>To do List</h3>
+                <img src="edit-icon.svg" alt="Clipboard Icon">
+            </div>
+            <div class="todo-input">
+                <input type="text" id="new-task" placeholder="add some task ....">
+                <button onclick="addTask()">Add</button>
+            </div>
+            <div id="todo-container"></div>
+        </div>
+        <div class="upcoming-holidays" onclick="toggleDropdown(this)">
+            <h4>Upcoming Holidays</h4>
+            <img src="chevron-up-icon.svg" alt="Dropdown Icon">
+        </div>
+        <div class="dropdown-content">
+            <b>Holiday:</b> <br> Independence Day
+            <b>Date:</b> <br> August 15, 2024
+           <b> Description:</b><br> A national holiday celebrating the country's independence with parades, fireworks, and
+            various cultural events.
+        </div>
+    </div>
+
+    <script>
+
+        function toggleDropdown(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+
+        function addTask() {
+            const taskText = document.getElementById('new-task').value;
+            if (taskText === '') return;
+
+            const taskContainer = document.createElement('div');
+            taskContainer.className = 'todo-item';
+
+            const taskSpan = document.createElement('span');
+            taskSpan.textContent = taskText;
+
+            const iconsDiv = document.createElement('div');
+            iconsDiv.className = 'icons';
+
+            const editIcon = document.createElement('img');
+            editIcon.src = 'edit-icon.svg';
+            editIcon.alt = 'Edit Icon';
+            editIcon.onclick = function () {
+                editTask(taskSpan);
+            };
+
+            const deleteIcon = document.createElement('img');
+            deleteIcon.src = 'delete-icon.svg';
+            deleteIcon.alt = 'Delete Icon';
+            deleteIcon.onclick = function () {
+                deleteTask(taskContainer);
+            };
+
+            iconsDiv.appendChild(editIcon);
+            iconsDiv.appendChild(deleteIcon);
+
+            taskContainer.appendChild(taskSpan);
+            taskContainer.appendChild(iconsDiv);
+
+            document.getElementById('todo-container').appendChild(taskContainer);
+
+            document.getElementById('new-task').value = '';
+        }
+
+        function editTask(taskSpan) {
+            const newTaskText = prompt('Edit your task', taskSpan.textContent);
+            if (newTaskText !== null && newTaskText !== '') {
+                taskSpan.textContent = newTaskText;
+            }
+        }
+
+        function deleteTask(taskContainer) {
+            taskContainer.remove();
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+<!-- Notification -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Dropdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F2F5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 320px;
+            padding: 20px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .notification {
+            margin-bottom: 20px;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: left;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+
+        }
+
+        .notification-header h3 {
+            font-size: 14px;
+            margin: 0;
+            color: #02353C;
+        }
+
+        .notification-header img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .dropdown {
+            border-bottom: 1px solid #F0F2F5;
+            padding: 10px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown h4 {
+            margin: 0;
+            font-size: 14px;
+            color: #787878;
+        }
+
+        .dropdown img {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.3s;
+        }
+
+        .dropdown-content {
+            display: none;
+            padding: 10px 0;
+        }
+
+        .dropdown-content p {
+            margin: 0;
+            font-size: 12px;
+            color: #02353C;
+        }
+
+        .dropdown.active img {
+            transform: rotate(180deg);
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="notification">
+            <div class="notification-header">
+                <h3>Notification</h3>
+                <img src="notification-icon.svg" alt="Bell Icon">
+            </div>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <h4>Upcoming Birthdays</h4>
+                <img src="chevron-up-icon.svg" alt="Dropdown Icon">
+            </div>
+            <div class="dropdown-content">
+                <p>John Doe - July 18</p>
+                <p>Jane Smith - July 22</p>
+            </div>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <h4>Upcoming Anniversary</h4>
+                <img src="chevron-up-icon.svg" alt="Dropdown Icon">
+            </div>
+            <div class="dropdown-content">
+                <p>John and Jane - August 1</p>
+            </div>
+            <div class="dropdown" onclick="toggleDropdown(this)">
+                <h4>Dyotis Events</h4>
+                <img src="chevron-up-icon.svg" alt="Dropdown Icon">
+            </div>
+            <div class="dropdown-content">
+                <p>Summer Festival - July 30</p>
+                <p>Annual Meetup - August 15</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDropdown(element) {
+            element.classList.toggle('active');
+            const content = element.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- My Current Project -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - My Current Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F2F5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .current-project-section {
+            width: 552.91px;
+            height: 266px;
+            padding: 30px 20px;
+            background: #FFFFFF;
+            border-radius: 5px 0 0 0;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .current-project-header {
+            position: absolute;
+            top: 192px;
+            left: 547px;
+            padding-top: 8.16px;
+            background: #2EAF7D;
+            border-radius: 5px 0 0 0;
+            color: #FFFFFF;
+            font-size: 18px;
+            height: 25.18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-container {
+            width: 203.91px;
+            height: 203.91px;
+            border: 2.45px solid #FFFFFFCC;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .project-details {
+            width: 259px;
+            height: 159px;
+            background: #FFFFFF;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 5px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-details h3 {
+            font-size: 16px;
+            margin: 0 0 10px 0;
+            color: #2EAF7D;
+            border: 1px solid #2EAF7D;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .project-details p {
+            font-size: 14px;
+            color: #787878;
+            background: #F0F2F5;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="current-project-header">
+        My Current Project
+    </div>
+    <div class="current-project-section">
+        <div class="chart-container">
+            <canvas id="projectChart"></canvas>
+        </div>
+        <div class="project-details">
+            <h3>Project 1</h3>
+            <p>HRMS PROJECT</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('projectChart').getContext('2d');
+        const projectChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['P1', 'P2', 'P3', 'P4', 'P5'],
+                datasets: [{
+                    label: 'Project Data',
+                    data: [20, 20, 20, 20, 20],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+ -->
+
+
+

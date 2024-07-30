@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>services</title>
+    <style>
+      /* navbar */
+           nav {
+            width: 100%;
+            height: 63px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #02353C;
+            opacity: 0.9;
+            position: sticky;
+            z-index: 1000;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            color: #FFFFFF;
+        }
+
+        .nav-center a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .nav-center a:last-child {
+            margin-right: 0;
+        }
+
+        .nav-center a:hover {
+            opacity: 1;
+        }
+
+        .nav-left {
+            width: 95px;
+            height: 41px;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.9;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s; /* Smooth transition */
+        }
+
+        .nav-left a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-left:hover {
+            background-color: #2EAF7D; /* Change background color on hover */
+            color: #333; /* Change text color on hover */
+            opacity: 1;
+        }
+
+        .nav-left:hover a {
+            color: white; /* Change link color on hover */
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #02353C;
+            overflow-x: hidden;
+            transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sidebar a {
+            padding: 8px 8px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #FFFFFF;
+            display: block;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .sidebar a:hover {
+            color: #2EAF7D;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #FFFFFF;
+        }
+
+        .sidebar-login {
+            margin-top: 20px;
+            width: 120px;
+            height: 50px;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.9;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .sidebar-login a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar-login:hover {
+            background-color: #2EAF7D; /* Change background color on hover */
+            color: #333; /* Change text color on hover */
+            opacity: 1;
+        }
+
+        .sidebar-login:hover a {
+            color: white; /* Change link color on hover */
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .nav-center,
+            .nav-left {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                color: #FFFFFF;
+                font-size: 30px;
+                cursor: pointer;
+                padding-right: 20px;
+            }
+        }
+
+        /* service section */
+
+        .services-section {
+           
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px;
+            background-color: #f2f6f6;
+            /* border-radius: 15px; */
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            /* margin: 20px; */
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .services-section img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .services-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .services-content {
+            flex: 1;
+            margin-left: 20px;
+            max-width: 877px;
+            position: relative;
+        }
+
+        .services-content h2 {
+            font-size: 2.5rem;
+            color: #02353C;
+            margin-bottom: 20px;
+            position: relative;
+            font-weight: 800;
+        }
+
+        .services-content h2 span {
+            color: #2EAF7D;
+            position: relative;
+        }
+
+        .services-content h2 span:after {
+           
+            width: 60px;
+            height: 4px;
+            background: #2EAF7D;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+        }
+
+        .services-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 27px;
+        }
+
+        .service-item {
+            flex: 1 1 calc(33.333% - 20px);
+            border: 2px solid #24aa47;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .service-item:hover {
+          
+            color: #FFFFFF;
+        }
+
+      
+       
+     
+
+        .upper-right-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            max-width: 50px;
+            height: auto;
+        }
+
+       
+
+        @media (max-width: 768px) {
+            .services-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .services-content {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .services-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-item {
+                flex: 1 1 100%;
+            }
+
+            .upper-right-img {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-content h2 {
+                font-size: 2rem;
+            }
+
+            .services-content p {
+                font-size: 0.875rem;
+            }
+
+            .service-item {
+                padding: 10px;
+                font-size: 0.875rem;
+            }
+
+            .upper-right-img {
+                width: 30px;
+            }
+
+            .lower-right-img {
+                margin-top: 10px;
+            }
+        }
+
+        /* our service */
+        .our-services-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px;
+            background-color: #FFFFFF;
+          
+           
+            font-family: 'Inter', sans-serif;
+        }
+
+        .our-services-section img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            /* border-radius: 10px; */
+        }
+
+        .our-services-content {
+            flex: 1;
+            margin-left: 20px;
+            max-width: 818px;
+            position: relative;
+        }
+
+        .our-services-content h2 {
+            font-size: 2.5rem;
+            color: #02353C;
+            margin-bottom: 20px;
+        }
+
+        .our-services-content h2 span {
+            color: #2EAF7D;
+        }
+
+        .our-services-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            /* margin-bottom: 20px; */
+            margin-top: 2rem
+        }
+
+        .our-services-content .read-more-btn {
+            background-color: #02353C;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+           
+            position: relative;
+    bottom: 8rem !important;
+    
+        }
+
+        .vector-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 20px; /* Top margin added to the vector image */
+        }
+
+        .upper-right-image {
+            position: absolute;
+            top: 10px;
+            right: -21px;
+            width: 100px;
+            height: auto;
+            /* margin: 10px;  */
+        }
+
+        @media (max-width: 768px) {
+            .our-services-section {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .our-services-content {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .vector-image {
+                display: none;
+            }
+
+            .upper-right-image {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .our-services-content h2 {
+                font-size: 2rem;
+            }
+
+            .our-services-content p {
+                font-size: 0.875rem;
+            }
+            .our-services-content .read-more-btn{
+                bottom: 0rem !important;
+            }
+
+            .read-more-btn {
+                padding: 8px 16px;
+            }
+
+            .upper-right-image {
+                display: none;
+            }
+        }
+
+        /* hrms suit */
+        .hrms-services-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            background-color: #FFFFFF;
+           
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hrms-services-section img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .hrms-services-content {
+            flex: 1;
+            margin-right: 20px;
+            max-width: 818px;
+        }
+
+        .hrms-services-content h2 {
+            font-size: 2.5rem;
+            color: #02353C;
+            margin-bottom: 20px;
+        }
+
+        .hrms-services-content h2 span {
+            color: #2EAF7D;
+        }
+
+        .hrms-services-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .hrms-read-btn {
+            background-color: #02353C;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hrms-vector-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hrms-services-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .hrms-services-content {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .hrms-vector-img {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hrms-services-content h2 {
+                font-size: 2rem;
+            }
+
+            .hrms-services-content p {
+                font-size: 0.875rem;
+            }
+
+            .hrms-read-btn {
+                padding: 8px 16px;
+            }
+        }
+        /* hrms image */
+        .hrmsimage-services-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            background-color: #FFFFFF;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hrmsimage-container {
+            display: flex;
+            width: 100%;
+            height: 523px;
+            margin-bottom: 20px;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hrmsimage-container img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hrmsimage-services-content {
+            max-width: 560px;
+            background-color: #FFFFFF;
+            padding: 13px;
+            text-align: left;
+            position: absolute;
+            top: 6rem;
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Center horizontally */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hrmsimage-services-content h2 {
+            font-size: 1.5rem;
+            color: #02353C;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hrmsimage-services-content h2 span {
+            color: #2EAF7D;
+        }
+
+        .hrmsimage-services-content p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #000;
+            margin-bottom: 20px; 
+            font-family: 'Inter', sans-serif;
+
+        }
+
+        .hrmsimage-read-btn {
+            background-color: #02353C;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .hrmsimage-vector-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hrmsimage-services-content {
+                top: 4rem; /* Adjusted for better visibility on smaller screens */
+                padding: 15px; /* Adjusted padding */
+            }
+            .hrmsimage-services-content h2 {
+                font-size: 1.75rem; /* Increased font size for better readability */
+            }
+
+            .hrmsimage-services-content p {
+                font-size: 0.875rem; /* Adjusted for smaller screens */
+            }
+
+            .hrmsimage-read-btn {
+                padding: 8px 16px; /* Adjusted padding for buttons */
+            }
+
+            .hrmsimage-container {
+                flex-direction: column;
+                height: auto; /* Allow the height to adjust based on content */
+            }
+
+            .hrmsimage-container img {
+                width: 100%; /* Make images full width */
+                height: auto; /* Adjust height automatically */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hrmsimage-services-content {
+                top: 3rem; /* Adjusted for better visibility on the smallest screens */
+            }
+
+            .hrmsimage-services-content h2 {
+                font-size: 1.5rem; /* Adjusted font size */
+            }
+
+            .hrmsimage-services-content p {
+                font-size: 0.75rem; /* Adjusted font size */
+            }
+
+            .hrmsimage-read-btn {
+                padding: 6px 12px; /* Adjusted padding for buttons */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <!--navbar-->
+        <nav>
+            <div class="nav-right">
+                <a class="navbar-brand" href="#">
+                    <img src="Rectangle 422 (1).svg" alt="Logo" class="navbar-logo" style="width: 223px; margin-left: 0px; margin-top: 5px">
+                    <img src="Layer 2.svg" alt="" style="position: absolute; left: 11px; top: 13px">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="mentor.html">Our Mentor</a>
+            </div>
+            <div class="nav-left">
+                <a href="">Login</a>
+            </div>
+            <span class="mobile-menu" onclick="openNav()">&#9776;</span>
+        </nav>
+
+        <!-- Sidebar -->
+        <div id="mySidebar" class="sidebar" style="    font-family: sans-serif;">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="mentor.html">Our Mentor</a>
+            <div class="sidebar-login">
+                <a href="">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+    <!--service-->
+    <section class="services-section">
+        <img src="image.png" alt="Services Image">
+        <div class="services-content">
+            <h2>Services <span>We Provide</span></h2>
+            <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <div class="services-list">
+                <div class="service-item" style="    width: 16rem;">Service 1</div>
+                <div class="service-item" style="    width: 16rem;">Service 2</div>
+                <div class="service-item" style="    width: 16rem;">Service 3</div>
+                <div class="service-item" style="    width: 16rem;">Service 4</div>
+                <div class="service-item" style="    width: 16rem;">Service 5</div>
+                <div class="service-item" style="    width: 16rem;">Service 6</div>
+            </div>
+            <img src="Group (2).svg" alt="Upper Right Image" class="upper-right-img" style="    margin-top: -22px;
+    max-width: 145px">
+            
+        </div>
+    </section>
+
+    <!--our services-->
+
+    <div>
+        <h2 style="  text-align: center;
+        font-size: 3rem;
+        font-weight: 800;  font-family: 'Inter', sans-serif; ">Our <span style="color: #2EAF7D;">Services</span></h2> 
+     
+    <section class="our-services-section">
+        <img src="path_to_your_left_image.png" alt="Our Services Image">
+        <div class="our-services-content">
+            <img src="Group 261.svg" alt="Upper Right Image" class="upper-right-image" style="    width: 9rem;
+    margin-top: -32px"> 
+    <h3 style="font-weight: 900;">A Complete <span style="color: #2EAF7D;"> HRMS Suite</span> </h3>
+            <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <a href="#" class="read-more-btn">Read More</a>
+            <img src="Vector 13.svg" alt="Vector Image" class="vector-image">
+        </div>
+       
+    </section>
+</div>
+<!-- hrms suit -->
+<div>
+    <section class="hrms-services-section">
+        <div class="hrms-services-content">
+            <h2>A Complete <span>HRMS Suite</span></h2>  
+            <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <a href="#" class="hrms-read-btn">Read More</a>
+           
+        </div>
+        <img src="-left-image.png" alt="Our Services Image">
+    </section>
+</div>
+<!--hrms image-->
+<div>
+    <div class="hrmsimage-container">
+        <img src="Rectangle 458.svg" alt="HRMS Image 1">
+        <img src="Rectangle 457.svg" alt="HRMS Image 2">
+        <div class="hrmsimage-services-content">
+            <h2>A Complete <span>HRMS Suite</span></h2>  
+            <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <a href="#" class="hrmsimage-read-btn">Read More</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

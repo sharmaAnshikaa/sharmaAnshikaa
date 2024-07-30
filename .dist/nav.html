@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav</title>
+    <style>
+        nav {
+            width: 100%;
+            height: 63px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #02353C;
+            opacity: 0.9;
+            position: sticky;
+            z-index: 1000;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            color: #FFFFFF;
+        }
+
+        .nav-center a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .nav-center a:last-child {
+            margin-right: 0;
+        }
+
+        .nav-center a:hover {
+            opacity: 1;
+        }
+
+        .nav-left {
+            width: 95px;
+            height: 41px;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.9;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s; /* Smooth transition */
+        }
+
+        .nav-left a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-left:hover {
+            background-color: #2EAF7D; /* Change background color on hover */
+            color: #333; /* Change text color on hover */
+            opacity: 1;
+        }
+
+        .nav-left:hover a {
+            color: white; /* Change link color on hover */
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            left: 0;
+            background-color: #02353C;
+            overflow-x: hidden;
+            transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sidebar a {
+            padding: 8px 8px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #FFFFFF;
+            display: block;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .sidebar a:hover {
+            color: #2EAF7D;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            color: #FFFFFF;
+        }
+
+        .sidebar-login {
+            margin-top: 20px;
+            width: 120px;
+            height: 50px;
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 1px solid #FFFFFF;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.9;
+            transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+        }
+
+        .sidebar-login a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar-login:hover {
+            background-color: #2EAF7D; /* Change background color on hover */
+            color: #333; /* Change text color on hover */
+            opacity: 1;
+        }
+
+        .sidebar-login:hover a {
+            color: white; /* Change link color on hover */
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .nav-center,
+            .nav-left {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                color: #FFFFFF;
+                font-size: 30px;
+                cursor: pointer;
+                padding-right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!--navbar-->
+        <nav>
+            <div class="nav-right">
+                <a class="navbar-brand" href="#">
+                    <img src="Rectangle 422 (1).svg" alt="Logo" class="navbar-logo" style="width: 223px; margin-left: -7px; margin-top: 5px">
+                    <img src="Layer 2.svg" alt="" style="position: absolute; left: 11px; top: 13px">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Services</a>
+                <a href="mentor.html">Our Mentor</a>
+            </div>
+            <div class="nav-left">
+                <a href="">Login</a>
+            </div>
+            <span class="mobile-menu" onclick="openNav()">&#9776;</span>
+        </nav>
+
+        <!-- Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="mentor.html">Our Mentor</a>
+            <div class="sidebar-login">
+                <a href="">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+</body>
+</html>

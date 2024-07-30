@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card {
+            flex: 1;
+            min-width: 150px; /* Minimum width for each card */
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 43px;
+            height: 43px;
+            margin-right: 20px;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+          
+        }
+        .card-content span {
+            font-size: 19px;
+            font-weight: 700;
+           
+        }
+    </style>
+</head>
+
+    <div class="flex justify-between w-full max-w-5xl" style="max-width: 64rem; height: 8rem; background-color: gray;">
+        <div class="card">
+            <img src="https://via.placeholder.com/50" alt="Total Project">
+            <div class="card-content">
+                <span>10</span>
+                <p style="color: gray;">Total project</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/50" alt="Currently Working">
+            <div class="card-content">
+                <span>6</span>
+                <p style="color: gray;">Currently working</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/50" alt="Completed Project">
+            <div class="card-content">
+                <span>3</span>
+                <p style="color: gray;">Completed project</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/50" alt="Pending Project">
+            <div class="card-content">
+                <span>1</span>
+                <p style="color: gray;">Pending project</p>
+            </div>
+        </div>
+    </div>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information Cards</title>
+    <style>
+        .card-container {
+            /* display: flex; */
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 26px;
+            width: 603px;
+            height: 9rem;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+        .card .left, .card .right {
+            width: 45%;
+            margin-top: 1rem;
+        }
+        .card .item {
+            margin-bottom: 33px;
+        }
+        .card .label {
+            /* font-weight: bold; */
+            color: #555;
+        }
+        .card .value {
+            color: #888;
+        }
+    </style>
+</head>
+<!-- <body> -->
+
+<div class="card-container" id="cardContainer">
+    <!-- Employee cards will be generated here -->
+</div>
+
+<script>
+    const employees = [
+        {
+            id: '101',
+            name: 'Krishna Kumar',
+            department: 'Information Technology',
+            designation: 'UI/UX Designer',
+            dateOfJoining: '03/10/2023',
+            location: 'Noida'
+        },
+        // Add more employee objects here
+    ];
+
+    const cardContainer = document.getElementById('cardContainer');
+
+    employees.forEach(employee => {
+        const card = document.createElement('div');
+        card.className = 'card';
+
+        card.innerHTML = `
+            <div class="left">
+                <div class="item">
+                    <span class="label" style="color:#9b9696;">Employee Id -</span>
+                    <span class="value" style="color:#000; font-weight:500;    ">${employee.id}</span>
+                </div>
+                <div class="item">
+                    <span class="label" style="color:#9b9696;">Department -</span>
+                    <span class="value" style="color:#000;font-weight:500;     ">${employee.department}</span>
+                </div>
+                <div class="item">
+                    <span class="label" style="color:#9b9696;">Date of Joining -</span>
+                    <span class="value" style="color:#000;font-weight:500; ">${employee.dateOfJoining}</span>
+                </div>
+               
+               
+            </div>
+            <div class="right">
+                 <div class="item">
+                    <span class="label" style="color:#9b9696;">Name -</span>
+                    <span class="value" style="color:#000; font-weight:500;">${employee.name}</span>
+                </div>
+                <div class="item">
+                    <span class="label" style="color:#9b9696;">Designation -</span>
+                    <span class="value" style="color:#000;font-weight:500;  ">${employee.designation}</span>
+                </div>
+                
+                <div class="item">
+                    <span class="label" style="color:#9b9696;">Location -</span>
+                    <span class="value" style="color:#000;font-weight:500; ">${employee.location}</span>
+                </div>
+            </div>
+        `;
+
+        cardContainer.appendChild(card);
+    });
+</script>
+
+</body>
+</html>

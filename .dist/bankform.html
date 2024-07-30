@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* box */
+    .box {
+            background: #2EAF7D;
+            width: 140.38px;
+            height: 37.18px;
+            padding: 9.39px;
+            gap: 10px;
+            border-radius: 3px;
+            color: #E4E4E4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .span {
+            width: 117px;
+            height: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 11.5px;
+            text-align: center;
+             }
+    </style>
+</head>
+<div class="box">
+    <div class="span">Bank information</div>
+</div> 
+
+    <div class="bg-white p-6 -lg -lg w-full max-w-lg" style="padding: 2.5rem; background-color: #f7f7f7;">
+        <form>
+            <div class="mb-4 flex items-center">
+                <label for="bankName" class="w-1/3 text--700 font-bold" style="color: rgb(114 117 122);" >Bank Name</label>
+                <input type="text" id="bankName" class="w-2/3  appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="Punjab National Bank" >
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="accountNo" class="w-1/3 text-gray-700 font-bold"  style="color: rgb(114 117 122);">Account No</label>
+                <input type="text" id="accountNo" class="w-2/3  appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter Account Number">
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="ifscCode" class="w-1/3 text-gray-700 font-bold"  style="color: rgb(114 117 122);">IFSC Code</label>
+                <input type="text" id="ifscCode" class="w-2/3  appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter IFSC Code">
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="pinCode" class="w-1/3 text-gray-700 font-bold" style="color: rgb(114 117 122);">Pin Code</label>
+                <input type="text" id="pinCode" class="w-2/3  appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="201307">
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="bankLocation" class="w-1/3 text-gray-700 font-bold"  style="color: rgb(114 117 122);">Bank Location</label>
+                <input type="text" id="bankLocation" class="w-2/3 appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="Noida sector-15 D block">
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="aadhaarNo" class="w-1/3 text-gray-700 font-bold"  style="color: rgb(114 117 122);">Aadhaar No</label>
+                <input type="text" id="aadhaarNo" class="w-2/3  appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="632222222222">
+            </div>
+            <div class="mb-4 flex items-center">
+                <label for="panCardNo" class="w-1/3 text-gray-700 font-bold"  style="color: rgb(114 117 122);">Pan Card No</label>
+                <input type="text" id="panCardNo" class="w-2/3  appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="6FFGDX2222">
+            </div>
+            <!-- <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+            </div> -->
+        </form>
+    </div>
+
+</html>

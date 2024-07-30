@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CSS </title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+    }
+    
+    .info-container {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .info-target {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .info-description {
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border-radius: 5px;
+        white-space: nowrap;
+        pointer-events: none;
+        transition: opacity 0.5s;
+    }
+    
+    .info-target:hover + .info-description {
+        animation: showInfo 0s forwards 0.5s; /* delay of 1s */
+    }
+    
+    @keyframes showInfo {
+        to {
+            opacity: 1;
+        }
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="info-container">
+        <div class="info-target">Hover over me</div>
+        <div class="info-description">This is the information that appears after hovering for a while.</div>
+    </div>
+</body>
+</html>

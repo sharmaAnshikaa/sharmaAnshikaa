@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>timesheet form</title>
+    <style>
+        
+        #openPopup {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        
+        .popup-content {
+            background-color: #bcbcbc;
+            padding: 50px;
+            border-radius: 5px;
+            width:21%;
+            /* max-width: 90%; */
+            position: relative;
+            font-family: Arial, sans-serif;
+            justify-content: center;
+
+
+           
+        }
+
+        
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 42px;
+        }
+
+        .form-header div {
+            display: flex;
+        }
+
+        .form-header label {
+            font-weight: lighter;
+            color: #787878;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: lighter;
+            color: #787878;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #EDF1F4;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        .form-actions .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+
+        .form-actions .btn.Save {
+            background-color: #85db99;
+            color: #fff;
+        }
+
+        .form-actions .btn.Cancel {
+            background-color: #EDF1F4;
+            color: #fff;
+        }
+
+        .form-group1, .form-group2 {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+           
+        }
+
+        .form-group1 .form-group, .form-group2 .form-group {
+            width: 48%;
+            margin-bottom: 20px;
+          
+        }
+        /* box */
+    .box {
+            background: #2EAF7D;
+            width: 140.38px;
+            height: 26.10px;
+            padding: 9.39px;
+            gap: 10px;
+            border-radius: 3px;
+            color: #E4E4E4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .span {
+            width: 117px;
+            height: 11px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 11.5px;
+            text-align: center;
+             }
+
+    </style>
+</head>
+
+
+   
+        <div class="box">
+            <div class="span">TimeSheet form</div>
+        </div> 
+        <div class="popup-content">
+             
+            
+            
+            <!-- <span class="close">&times;</span> -->
+            <form style="width: fit-content;">
+                <div class="form-header">
+                    <div>
+                        <label>Employee Id - </label>
+                        <span>101</span>
+                    </div>
+                    <div>
+                        <label>Name - </label>
+                        <span>Krishna Kumar</span>
+                    </div>
+                </div>
+                <div class="form-group1" >
+                    <div class="form-group">
+                        <label for="locationType">Location</label>
+                        <select id="locationType" style="  color:#959798;">
+                            <option>office</option>
+                            <option>Home</option>
+                            <option>home</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hinvested">Hours invested</label>
+                        <select id="hinvested" style="  color: #959798;">
+                            <option>8:00</option>
+                            <option>9:00</option>
+                            <option>10:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label for="reason">Project title</label>
+                    <textarea id="reason" style="height: 1rem;width: 18.9rem;  background-color: #EDF1F4;"></textarea>
+                </div>
+                <div class="form-group2" >
+                    <div class="form-group">
+                        <label for="fromDate" style="  color: #959798;">Date</label>
+                        <input type="date" id="fromDate" value="2023-11-24"style="width: 18.9rem; color: #959798;">
+                    </div>
+               </div>
+               
+                <div class="form-group" >
+                    <label for="Description">Description</label>
+                    <textarea id="Description" style="width: 18.9rem;  background-color: #EDF1F4;"></textarea>
+                </div>
+                <div class="form-actions" >
+                    <button type="button" class="btn Save">Save</button>
+                    <button type="button" class="btn Cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('openPopup').addEventListener('click', function () {
+            document.getElementById('popup').style.display = 'flex';
+        });
+
+        document.querySelector('.close').addEventListener('click', function () {
+            document.getElementById('popup').style.display = 'none';
+        });
+
+        window.addEventListener('click', function (event) {
+            if (event.target === document.getElementById('popup')) {
+                document.getElementById('popup').style.display = 'none';
+            }
+        });
+    </script>
+
+</html>
